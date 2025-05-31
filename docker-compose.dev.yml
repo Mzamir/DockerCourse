@@ -1,0 +1,14 @@
+# version: '31'
+services:
+  express-node-app:
+    build:
+      context: .
+      args:
+        - MODE_ENV=dev
+      target: development 
+    container_name: express-node-app-container-dev
+    volumes:
+      - ./src:/app/src:ro # Mount source code for live reloading "Bind Mounting" , syncing changes
+    command: npm run start-dev
+    environment:
+      - CHOKIDAR_USEPOLLING=true

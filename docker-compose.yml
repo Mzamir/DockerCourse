@@ -1,0 +1,37 @@
+services:
+  express-node-app:
+    ports:
+      - "4000:4000"
+    image: express-node-app-image
+    environment:
+      - PORT=4000
+    env_file: # Load environment variables from a file
+      - ./.env
+  mongo:
+    image: mongo
+    restart: always
+    volumes:
+      - mongo-db:/data/db # Persistent storage for MongoDB
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
+      ME_CONFIG_BASICAUTH: false
+  redis:
+    image: redis
+    # restart: always
+    ports:
+      - "6379:6379"
+    # environment:
+    #   - REDIS_PASSWORD=example # Set a password for Redis (optional)
+    # command: redis-server --requirepass example # Start Redis with password authentication
+volumes: # Define named volumes for persistent storage anonymously, creating here so that they the services can use the same storage each time they are started
+  mongo-db: # Named volume for MongoDB data

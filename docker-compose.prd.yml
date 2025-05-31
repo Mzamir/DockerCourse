@@ -1,0 +1,10 @@
+# version: '3'
+services:
+  express-node-app:
+    build:
+      context: .
+      target: production
+      args:
+        - MODE_ENV=prd
+    container_name: express-node-app-container-prd
+    command: npm run start
