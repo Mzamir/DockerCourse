@@ -7,12 +7,12 @@ const PORT = 4000;
 const app = express();
 
 const REDIS_PORT = '6379'; // Use default Redis port
-const REDIS_HOST = 'redis';
+const REDIS_HOST = 'localhost';
 
 const DB_PORT = '27017';
 const DB_USER = 'root';
 const DB_PASSWORD = 'example';
-const DB_HOST = 'mongo';
+const DB_HOST = 'localhost';
 const URI = `mongodb://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}`
 
 
