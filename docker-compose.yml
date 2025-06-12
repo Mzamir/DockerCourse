@@ -1,8 +1,8 @@
 services:
   express-node-app:
     network_mode: host # Use host network mode for simplicity, allowing the app to use the host's network stack 
-    # ports:
-    #   - "4000:4000"
+    ports:
+      - "4000:4000"
     image: express-node-app-image
     environment:
       - PORT=4000
