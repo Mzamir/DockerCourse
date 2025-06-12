@@ -36,4 +36,4 @@ mongoose
 
 app.get('/', (req, res) => res.send('<h1>Hello Mahmoud samir</h1>'));
 
-app.listen(PORT, () => console.log(`app is up and running on: ${PORT}`));
+app.listen(PORT,'0.0.0.0' , () => console.log(`app is up and running on: ${PORT}`));
